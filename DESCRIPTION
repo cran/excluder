@@ -1,6 +1,6 @@
 Package: excluder
 Title: Checks for Exclusion Criteria in Online Data
-Version: 0.3.2
+Version: 0.3.3
 Authors@R: 
   c(person(given = "Jeffrey R.",
            family = "Stevens",
@@ -35,11 +35,11 @@ Suggests: covr, knitr, lifecycle, readr, rmarkdown, testthat (>=
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2021-11-10 14:41:09 UTC; jstevens
+Packaged: 2021-12-03 20:21:29 UTC; jstevens
 Author: Jeffrey R. Stevens [aut, cre, cph]
     (<https://orcid.org/0000-0003-2375-1360>),
   Joseph O'Brien [rev] (<https://orcid.org/0000-0001-9851-5077>),
   Julia Silge [rev] (<https://orcid.org/0000-0002-3671-836X>)
 Maintainer: Jeffrey R. Stevens <jeffrey.r.stevens@gmail.com>
 Repository: CRAN
-Date/Publication: 2021-11-18 14:30:05 UTC
+Date/Publication: 2021-12-03 21:00:12 UTC
