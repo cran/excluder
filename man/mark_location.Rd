@@ -8,6 +8,7 @@ mark_location(
   x,
   id_col = "ResponseId",
   location_col = c("LocationLatitude", "LocationLongitude"),
+  rename = TRUE,
   include_na = FALSE,
   quiet = FALSE,
   print = TRUE
@@ -20,6 +21,8 @@ mark_location(
 
 \item{location_col}{Two element vector specifying columns for latitude
 and longitude (in that order).}
+
+\item{rename}{Logical indicating whether to rename columns (using \code{\link[=rename_columns]{rename_columns()}})}
 
 \item{include_na}{Logical indicating whether to include rows with NA in
 latitude and longitude columns in the output list of potentially excluded
@@ -44,6 +47,9 @@ The function is written to work with data from
 \href{https://www.qualtrics.com/}{Qualtrics} surveys.
 }
 \details{
+To record this information in your Qualtrics survey, you must ensure that
+\href{https://www.qualtrics.com/support/survey-platform/survey-module/survey-options/survey-protection/#AnonymizingResponses}{Anonymize responses is disabled}.
+
 Default column names are set based on output from the
 \href{https://docs.ropensci.org/qualtRics/reference/fetch_survey.html}{\code{qualtRics::fetch_survey()}}.
 The function only works for the United States.

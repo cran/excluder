@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# excluder
+# excluder <a href="https://docs.ropensci.org/excluder/"><img src="man/figures/logo.png" align="right" height="139" /></a>
 
 <!-- badges: start -->
 
@@ -10,8 +10,8 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![lifecycle](man/figures/lifecycle-stable.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/excluder)](https://cran.r-project.org/package=excluder)
-<!-- [![Downloads](https://cranlogs.r-pkg.org/badges/excluder)](https://CRAN.R-project.org/package=excluder) -->
-<!-- [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/excluder?color=orange)](https://CRAN.R-project.org/package=excluder) -->
+[![Total
+Downloads](https://cranlogs.r-pkg.org/badges/grand-total/excluder)](https://CRAN.R-project.org/package=excluder)
 
 [![R-CMD-check](https://github.com/ropensci/excluder/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci/excluder/actions)
 [![Codecov test
@@ -262,9 +262,9 @@ df <- qualtrics_text %>%
 #> ℹ 6 out of 98 rows with incomplete progress were excluded, leaving 92 rows.
 #> ℹ 9 out of 92 duplicate rows were excluded, leaving 83 rows.
 #> ℹ 2 out of 83 rows of short and/or long duration were excluded, leaving 81 rows.
-#> ℹ 4 out of 81 rows with unacceptable screen resolution were excluded, leaving 77 rows.
-#> ℹ 2 out of 77 rows with IP addresses outside of US were excluded, leaving 75 rows.
-#> ℹ 4 out of 75 rows outside of the US were excluded, leaving 71 rows.
+#> ℹ 3 out of 81 rows with unacceptable screen resolution were excluded, leaving 78 rows.
+#> ℹ 2 out of 78 rows with IP addresses outside of US were excluded, leaving 76 rows.
+#> ℹ 4 out of 76 rows outside of the US were excluded, leaving 72 rows.
 ```
 
 ## Citing this package
@@ -283,7 +283,7 @@ issues](https://github.com/ropensci/excluder/issues) for ideas. And
 [pull requests](https://github.com/ropensci/excluder/pulls) are
 encouraged, but you may want to [raise an
 issue](https://github.com/ropensci/excluder/issues/new/choose) or
-[contact the maintainer](mailto:jeffrey.r.stevens@gmail.com) first.
+[contact the maintainer](mailto:jeffrey.r.stevens@protonmail.com) first.
 
 Please note that the excluder project is released with a [Contributor
 Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing

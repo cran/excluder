@@ -6,10 +6,12 @@
 \usage{
 check_resolution(
   x,
-  width_min = 1000,
+  res_min = 1000,
+  width_min = 0,
   height_min = 0,
   id_col = "ResponseId",
   res_col = "Resolution",
+  rename = TRUE,
   keep = FALSE,
   quiet = FALSE,
   print = TRUE
@@ -18,6 +20,8 @@ check_resolution(
 \arguments{
 \item{x}{Data frame (preferably imported from Qualtrics using \{qualtRics\}).}
 
+\item{res_min}{Minimum acceptable screen resolution (width and height).}
+
 \item{width_min}{Minimum acceptable screen width.}
 
 \item{height_min}{Minimum acceptable screen height.}
@@ -25,6 +29,8 @@ check_resolution(
 \item{id_col}{Column name for unique row ID (e.g., participant).}
 
 \item{res_col}{Column name for screen resolution (in format widthxheight).}
+
+\item{rename}{Logical indicating whether to rename columns (using \code{\link[=rename_columns]{rename_columns()}})}
 
 \item{keep}{Logical indicating whether to keep or remove exclusion column.}
 
@@ -47,6 +53,9 @@ The function is written to work with data from
 \href{https://www.qualtrics.com/}{Qualtrics} surveys.
 }
 \details{
+To record this information in your Qualtrics survey, you must
+\href{https://www.qualtrics.com/support/survey-platform/survey-module/editing-questions/question-types-guide/advanced/meta-info-question/}{insert a meta info question}.
+
 Default column names are set based on output from the
 \href{https://docs.ropensci.org/qualtRics/reference/fetch_survey.html}{\code{qualtRics::fetch_survey()}}.
 

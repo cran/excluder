@@ -7,6 +7,9 @@
 #' [Qualtrics](https://www.qualtrics.com/) surveys.
 #'
 #' @details
+#' To record this information in your Qualtrics survey, you must ensure that
+#' [Anonymize responses is disabled](https://www.qualtrics.com/support/survey-platform/survey-module/survey-options/survey-protection/#AnonymizingResponses).
+#'
 #' Default column names are set based on output from the
 #' [`qualtRics::fetch_survey()`](
 #' https://docs.ropensci.org/qualtRics/reference/fetch_survey.html).
@@ -24,6 +27,7 @@
 #' \{qualtRics\}).
 #' @param id_col Column name for unique row ID (e.g., participant).
 #' @param ip_col Column name for IP addresses.
+#' @param rename Logical indicating whether to rename columns (using [rename_columns()])
 #' @param country Two-letter abbreviation of country to check (default is "US").
 #' @param include_na Logical indicating whether to include rows with NA in
 #' IP address column in the output list of potentially excluded data.
@@ -63,10 +67,16 @@
 mark_ip <- function(x,
                     id_col = "ResponseId",
                     ip_col = "IPAddress",
+                    rename = TRUE,
                     country = "US",
                     include_na = FALSE,
                     quiet = FALSE,
                     print = TRUE) {
+
+  # Rename columns
+  if (rename) {
+    x <- rename_columns(x, alert = FALSE)
+  }
 
   # Check for presence of required column
   validate_columns(x, id_col)
@@ -147,6 +157,9 @@ mark_ip <- function(x,
 #' [Qualtrics](https://www.qualtrics.com/) surveys.
 #'
 #' @details
+#' To record this information in your Qualtrics survey, you must ensure that
+#' [Anonymize responses is disabled](https://www.qualtrics.com/support/survey-platform/survey-module/survey-options/survey-protection/#AnonymizingResponses).
+#'
 #' Default column names are set based on output from the
 #' [`qualtRics::fetch_survey()`](
 #' https://docs.ropensci.org/qualtRics/reference/fetch_survey.html).
@@ -205,6 +218,7 @@ mark_ip <- function(x,
 check_ip <- function(x,
                      id_col = "ResponseId",
                      ip_col = "IPAddress",
+                     rename = TRUE,
                      country = "US",
                      include_na = FALSE,
                      keep = FALSE,
@@ -215,6 +229,7 @@ check_ip <- function(x,
   exclusions <- mark_ip(x,
                         id_col = id_col,
                         ip_col = ip_col,
+                        rename = rename,
                         country = country,
                         quiet = quiet
   ) %>%
@@ -272,6 +287,7 @@ check_ip <- function(x,
 exclude_ip <- function(x,
                        id_col = "ResponseId",
                        ip_col = "IPAddress",
+                       rename = TRUE,
                        country = "US",
                        include_na = FALSE,
                        quiet = TRUE,
@@ -282,6 +298,7 @@ exclude_ip <- function(x,
   remaining_data <- mark_ip(x,
                             id_col = id_col,
                             ip_col = ip_col,
+                            rename = rename,
                             country = country,
                             include_na = include_na,
                             quiet = quiet

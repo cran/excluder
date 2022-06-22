@@ -7,6 +7,9 @@
 #' [Qualtrics](https://www.qualtrics.com/) surveys.
 #'
 #' @details
+#' To record this information in your Qualtrics survey, you must ensure that
+#' [Anonymize responses is disabled](https://www.qualtrics.com/support/survey-platform/survey-module/survey-options/survey-protection/#AnonymizingResponses).
+#'
 #' Default column names are set based on output from the
 #' [`qualtRics::fetch_survey()`](
 #' https://docs.ropensci.org/qualtRics/reference/fetch_survey.html).
@@ -21,6 +24,7 @@
 #' @param id_col Column name for unique row ID (e.g., participant).
 #' @param location_col Two element vector specifying columns for latitude
 #' and longitude (in that order).
+#' @param rename Logical indicating whether to rename columns (using [rename_columns()])
 #' @param include_na Logical indicating whether to include rows with NA in
 #' latitude and longitude columns in the output list of potentially excluded
 #' data.
@@ -54,9 +58,15 @@ mark_location <- function(x,
                             "LocationLatitude",
                             "LocationLongitude"
                           ),
+                          rename = TRUE,
                           include_na = FALSE,
                           quiet = FALSE,
                           print = TRUE) {
+
+  # Rename columns
+  if (rename) {
+    x <- rename_columns(x, alert = FALSE)
+  }
 
   # Check for presence of required column
   validate_columns(x, id_col)
@@ -117,6 +127,9 @@ mark_location <- function(x,
 #' [Qualtrics](https://www.qualtrics.com/) surveys.
 #'
 #' @details
+#' To record this information in your Qualtrics survey, you must ensure that
+#' [Anonymize responses is disabled](https://www.qualtrics.com/support/survey-platform/survey-module/survey-options/survey-protection/#AnonymizingResponses).
+#'
 #' Default column names are set based on output from the
 #' [`qualtRics::fetch_survey()`](
 #' https://docs.ropensci.org/qualtRics/reference/fetch_survey.html).
@@ -163,6 +176,7 @@ check_location <- function(x,
                              "LocationLatitude",
                              "LocationLongitude"
                            ),
+                           rename = TRUE,
                            include_na = FALSE,
                            keep = FALSE,
                            quiet = FALSE,
@@ -172,6 +186,7 @@ check_location <- function(x,
   exclusions <- mark_location(x,
     id_col = id_col,
     location_col = location_col,
+    rename = rename,
     include_na = include_na,
     quiet = quiet
   ) %>%
@@ -222,6 +237,7 @@ exclude_location <- function(x,
                                "LocationLatitude",
                                "LocationLongitude"
                              ),
+                             rename = TRUE,
                              include_na = FALSE,
                              quiet = TRUE,
                              print = TRUE,
@@ -231,6 +247,7 @@ exclude_location <- function(x,
   remaining_data <- mark_location(x,
     id_col = id_col,
     location_col = location_col,
+    rename = rename,
     include_na = include_na,
     quiet = quiet
   ) %>%

@@ -1,5 +1,18 @@
 # Test mark_resolution()
 
+test_that("Column names are renamed correctly", {
+  suppressMessages(expect_true(names(mark_resolution(qualtrics_fetch))[1] ==
+                                 "StartDate"))
+  suppressMessages(expect_true(names(mark_resolution(qualtrics_numeric))[1] ==
+                                 "StartDate"))
+  suppressMessages(expect_true(names(mark_resolution(qualtrics_numeric,
+                                                     rename = FALSE))[1] ==
+                                 "StartDate"))
+  suppressMessages(expect_error(mark_resolution(qualtrics_fetch,
+                                                rename = FALSE)))
+  suppressMessages(expect_message(mark_resolution(qualtrics_numeric)))
+})
+
 test_that("Mark output class is same as input class", {
   expect_s3_class(
     mark_resolution(qualtrics_numeric, quiet = TRUE),
@@ -46,6 +59,19 @@ test_that("Marks create data frames of correct size", {
 
 # Test check_resolution()
 
+test_that("Column names are renamed correctly", {
+  suppressMessages(expect_true(names(check_resolution(qualtrics_fetch))[1] ==
+                                 "StartDate"))
+  suppressMessages(expect_true(names(check_resolution(qualtrics_numeric))[1] ==
+                                 "StartDate"))
+  suppressMessages(expect_true(names(check_resolution(qualtrics_numeric,
+                                                      rename = FALSE))[1] ==
+                                 "StartDate"))
+  suppressMessages(expect_error(check_resolution(qualtrics_fetch,
+                                                 rename = FALSE)))
+  suppressMessages(expect_message(check_resolution(qualtrics_numeric)))
+})
+
 test_that("Check output class is same as input class", {
   expect_s3_class(
     check_resolution(qualtrics_numeric, quiet = TRUE),
@@ -71,7 +97,11 @@ test_that("Check output is printed properly", {
 
 test_that("Checks create data frames of correct size", {
   suppressMessages(expect_true(
-    nrow(check_resolution(qualtrics_numeric)) == 4
+    nrow(check_resolution(qualtrics_numeric)) == 3
+  ))
+  suppressMessages(expect_true(
+    nrow(check_resolution(qualtrics_numeric,
+                          res_min = 0, width_min = 1000)) == 4
   ))
   suppressMessages(expect_true(
     ncol(check_resolution(qualtrics_numeric)) == 16
@@ -89,7 +119,11 @@ test_that("Checks create data frames of correct size", {
     )) == 16
   ))
   suppressMessages(expect_true(
-    nrow(check_resolution(qualtrics_numeric, keep = TRUE)) == 4
+    nrow(check_resolution(qualtrics_numeric, keep = TRUE)) == 3
+  ))
+  suppressMessages(expect_true(
+    nrow(check_resolution(qualtrics_numeric,
+                          res_min = 0, width_min = 1000, keep = TRUE)) == 4
   ))
   suppressMessages(expect_true(
     ncol(check_resolution(qualtrics_numeric, keep = TRUE)) == 17
@@ -104,6 +138,19 @@ test_that("Exclusion column moved to first column when keep = TRUE", {
 })
 
 # Test exclude_resolution()
+
+test_that("Column names are renamed correctly", {
+  suppressMessages(expect_true(names(exclude_resolution(qualtrics_fetch))[1] ==
+                                 "StartDate"))
+  suppressMessages(expect_true(names(exclude_resolution(qualtrics_numeric))[1]
+                               == "StartDate"))
+  suppressMessages(expect_true(names(exclude_resolution(qualtrics_numeric,
+                                                        rename = FALSE))[1] ==
+                                 "StartDate"))
+  suppressMessages(expect_error(exclude_resolution(qualtrics_fetch,
+                                                   rename = FALSE)))
+  suppressMessages(expect_message(exclude_resolution(qualtrics_numeric)))
+})
 
 test_that("Exclude output class is same as input class", {
   suppressMessages(expect_s3_class(
@@ -139,7 +186,11 @@ test_that("Exclude output is printed properly", {
 
 test_that("Excludes create data frames of correct size", {
   suppressMessages(
-    expect_true(nrow(exclude_resolution(qualtrics_numeric)) == 96)
+    expect_true(nrow(exclude_resolution(qualtrics_numeric,
+                                        res_min = 0, width_min = 1000)) == 96)
+  )
+  suppressMessages(
+    expect_true(nrow(exclude_resolution(qualtrics_numeric)) == 97)
   )
   suppressMessages(
     expect_true(ncol(exclude_resolution(qualtrics_numeric)) == 16)

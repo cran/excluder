@@ -1,11 +1,11 @@
 Package: excluder
 Title: Checks for Exclusion Criteria in Online Data
-Version: 0.3.3
+Version: 0.4.0
 Authors@R: 
   c(person(given = "Jeffrey R.",
            family = "Stevens",
            role = c("aut", "cre", "cph"),
-           email = "jeffrey.r.stevens@gmail.com",
+           email = "jeffrey.r.stevens@protonmail.com",
            comment = c(ORCID = "0000-0003-2375-1360")),
     person(given = "Joseph",
              family = "O'Brien",
@@ -23,7 +23,7 @@ Description: Data that are collected through online sources such as Mechanical
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 URL: https://docs.ropensci.org/excluder/,
         https://github.com/ropensci/excluder/
 BugReports: https://github.com/ropensci/excluder/issues/
@@ -35,11 +35,11 @@ Suggests: covr, knitr, lifecycle, readr, rmarkdown, testthat (>=
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2021-12-03 20:21:29 UTC; jstevens
+Packaged: 2022-06-22 14:16:56 UTC; jstevens
 Author: Jeffrey R. Stevens [aut, cre, cph]
     (<https://orcid.org/0000-0003-2375-1360>),
   Joseph O'Brien [rev] (<https://orcid.org/0000-0001-9851-5077>),
   Julia Silge [rev] (<https://orcid.org/0000-0002-3671-836X>)
-Maintainer: Jeffrey R. Stevens <jeffrey.r.stevens@gmail.com>
+Maintainer: Jeffrey R. Stevens <jeffrey.r.stevens@protonmail.com>
 Repository: CRAN
-Date/Publication: 2021-12-03 21:00:12 UTC
+Date/Publication: 2022-06-22 15:20:02 UTC

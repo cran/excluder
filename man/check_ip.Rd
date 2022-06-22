@@ -8,6 +8,7 @@ check_ip(
   x,
   id_col = "ResponseId",
   ip_col = "IPAddress",
+  rename = TRUE,
   country = "US",
   include_na = FALSE,
   keep = FALSE,
@@ -22,6 +23,8 @@ check_ip(
 \item{id_col}{Column name for unique row ID (e.g., participant).}
 
 \item{ip_col}{Column name for IP addresses.}
+
+\item{rename}{Logical indicating whether to rename columns (using \code{\link[=rename_columns]{rename_columns()}})}
 
 \item{country}{Two-letter abbreviation of country to check (default is "US").}
 
@@ -48,6 +51,9 @@ The function is written to work with data from
 \href{https://www.qualtrics.com/}{Qualtrics} surveys.
 }
 \details{
+To record this information in your Qualtrics survey, you must ensure that
+\href{https://www.qualtrics.com/support/survey-platform/survey-module/survey-options/survey-protection/#AnonymizingResponses}{Anonymize responses is disabled}.
+
 Default column names are set based on output from the
 \href{https://docs.ropensci.org/qualtRics/reference/fetch_survey.html}{\code{qualtRics::fetch_survey()}}.
 The function uses \code{\link[iptools:country_ranges]{iptools::country_ranges()}} to assign IP addresses to

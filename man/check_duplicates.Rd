@@ -9,6 +9,7 @@ check_duplicates(
   id_col = "ResponseId",
   ip_col = "IPAddress",
   location_col = c("LocationLatitude", "LocationLongitude"),
+  rename = TRUE,
   dupl_ip = TRUE,
   dupl_location = TRUE,
   include_na = FALSE,
@@ -26,6 +27,8 @@ check_duplicates(
 
 \item{location_col}{Two element vector specifying columns for latitude and
 longitude (in that order).}
+
+\item{rename}{Logical indicating whether to rename columns (using \code{\link[=rename_columns]{rename_columns()}})}
 
 \item{dupl_ip}{Logical indicating whether to check IP addresses.}
 
@@ -56,6 +59,9 @@ function is written to work with data from
 \href{https://www.qualtrics.com/}{Qualtrics} surveys.
 }
 \details{
+To record this information in your Qualtrics survey, you must ensure that
+\href{https://www.qualtrics.com/support/survey-platform/survey-module/survey-options/survey-protection/#AnonymizingResponses}{Anonymize responses is disabled}.
+
 Default column names are set based on output from the
 \href{https://docs.ropensci.org/qualtRics/reference/fetch_survey.html}{\code{qualtRics::fetch_survey()}}.
 By default, IP address and location are both checked, but they can be
