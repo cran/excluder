@@ -74,7 +74,6 @@ mark_duplicates <- function(x,
                             include_na = FALSE,
                             quiet = FALSE,
                             print = TRUE) {
-
   # Rename columns
   if (rename) {
     x <- rename_columns(x, alert = FALSE)
@@ -91,8 +90,8 @@ mark_duplicates <- function(x,
   longitude <- x[[location_col[2]]]
 
   # Check for valid IP addresses
-  classify_ip <- iptools::ip_classify(ip_vector)
-  if (any(classify_ip == "Invalid" | all(is.na(classify_ip)), na.rm = TRUE)) {
+  classify_ip <- ipaddress::is_ipv4(ipaddress::ip_address(ip_vector))
+  if (any(!classify_ip | all(is.na(classify_ip)), na.rm = TRUE)) {
     stop("Invalid IP addresses in 'ip_col'.")
   }
 
@@ -233,7 +232,6 @@ check_duplicates <- function(x,
                              keep = FALSE,
                              quiet = FALSE,
                              print = TRUE) {
-
   # Mark and filter duplicates
   exclusions <- mark_duplicates(x,
     id_col = id_col,
@@ -306,7 +304,6 @@ exclude_duplicates <- function(x,
                                quiet = TRUE,
                                print = TRUE,
                                silent = FALSE) {
-
   # Mark and filter duplicates
   remaining_data <- mark_duplicates(x,
     id_col = id_col,

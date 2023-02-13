@@ -12,34 +12,34 @@ library(excluder)
 dplyr::glimpse(qualtrics_raw)
 #
 # Remove label rows and coerce metadata columns
-df <- remove_label_rows(qualtrics_raw) %>% 
+df <- remove_label_rows(qualtrics_raw) %>%
   dplyr::glimpse()
 
 ## ----mark1--------------------------------------------------------------------
 # Mark observations run as preview
-df %>% 
-  mark_preview() %>% 
+df %>%
+  mark_preview() %>%
   dplyr::glimpse()
 
 ## ----mark2--------------------------------------------------------------------
 # Mark preview and incomplete observations
-df %>% 
-  mark_preview() %>% 
-  mark_progress() %>% 
+df %>%
+  mark_preview() %>%
+  mark_progress() %>%
   dplyr::glimpse()
 
 ## ----mark3--------------------------------------------------------------------
-df %>% 
-  mark_preview() %>% 
-  mark_duration(min = 500) %>% 
-  unite_exclusions() %>% 
+df %>%
+  mark_preview() %>%
+  mark_duration(min = 500) %>%
+  unite_exclusions() %>%
   dplyr::relocate(exclusions, .before = StartDate)
 
 ## ----mark4--------------------------------------------------------------------
-df %>% 
-  mark_preview() %>% 
-  mark_duration(min = 500) %>% 
-  unite_exclusions(separator = ";", remove = FALSE) %>% 
+df %>%
+  mark_preview() %>%
+  mark_duration(min = 500) %>%
+  unite_exclusions(separator = ";", remove = FALSE) %>%
   dplyr::relocate(exclusions, .before = StartDate)
 
 ## ----check1-------------------------------------------------------------------
@@ -49,7 +49,7 @@ df %>%
 
 ## ----check2-------------------------------------------------------------------
 # Check for rows with durations less than 100 seconds
-df %>% 
+df %>%
   check_duration(min_duration = 100)
 
 ## ----check3-------------------------------------------------------------------
@@ -60,16 +60,16 @@ df %>%
 
 ## ----mark_check---------------------------------------------------------------
 # Check for multiple criteria
-df %>% 
-  mark_preview() %>% 
-  mark_duration(min = 500) %>% 
-  unite_exclusions() %>% 
+df %>%
+  mark_preview() %>%
+  mark_duration(min = 500) %>%
+  unite_exclusions() %>%
   dplyr::filter(exclusions != "")
 
 ## ----exclude1-----------------------------------------------------------------
 # Exclude survey responses used to preview the survey
-df %>% 
-  exclude_preview() %>% 
+df %>%
+  exclude_preview() %>%
   dplyr::glimpse()
 
 ## ----exclude2-----------------------------------------------------------------
